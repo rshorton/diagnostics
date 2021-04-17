@@ -154,11 +154,12 @@ bool GenericAnalyzer::init(
     startswith_.size() == 0 && name_.size() == 0 && contains_.size() == 0 &&
     expected_.size() == 0 && regex_.size() == 0)
   {
+
+	  std::string str = std::string("GenericAnalyzer ");
+	  str += "'%s' was not initialized with any way of checking diagnostics. Name: %s, namespace: %s";
     RCLCPP_ERROR(
-      rclcpp::get_logger("generic_analyzer"),
-      std::string("GenericAnalyzer ") +
-      "'%s' was not initialized with any way of checking diagnostics. Name: %s, namespace: %s",
-      nice_name_.c_str(), path.c_str(), n->get_namespace());
+      rclcpp::get_logger("generic_analyzer"), str.c_str(),
+	  	  nice_name_.c_str(), path.c_str(), n->get_namespace());
     return false;
   }
 
